@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+*.jar
+
+# Allure
+allure-results/
+allure-report/
+
+# Прочие исключения
+!**/src/test/**
