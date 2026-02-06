@@ -11,6 +11,6 @@ public class RequestSpecs {
     public static RequestSpecification baseRequestSpec = with()
             .filter(withCustomTemplates())
             .log().all()
-            .header("X-Api-Key", TestBase.API_KEY) // Берем из TestBase
+            .header("X-Api-Key", TestBase.API_KEY)
             .contentType(URLENC);
 }

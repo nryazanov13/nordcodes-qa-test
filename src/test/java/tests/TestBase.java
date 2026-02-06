@@ -12,12 +12,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.reset;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 
 public class TestBase {
-
-    // Константы для путей и ключей
 
     public static final ApiConfig config = ConfigFactory.create(ApiConfig.class);
 
@@ -26,7 +25,6 @@ public class TestBase {
     public static final String AUTH_PATH = "/auth";
     public static final String DO_ACTION_PATH = "/doAction";
 
-    // Инициализация API-клиентов
     protected final AppApi appApi = new AppApi();
     protected final MockApi mockApi = new MockApi();
     protected final Faker faker = new Faker();
@@ -34,19 +32,15 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
-        // Настройка RestAssured
         RestAssured.baseURI = config.baseUrl();
         RestAssured.defaultParser = Parser.JSON;
 
-        // Запускаем сервер принудительно
         wireMockServer.start();
-        // Привязываем статические методы stubFor к этому серверу
-        com.github.tomakehurst.wiremock.client.WireMock.configureFor("localhost", 8888);
+        configureFor("localhost", 8888);
     }
 
     @AfterAll
     static void tearDown() {
-        // Выключаем сервер после всех тестов
         wireMockServer.stop();
     }
 

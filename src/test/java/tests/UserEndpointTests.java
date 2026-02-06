@@ -102,7 +102,7 @@ public class UserEndpointTests extends TestBase {
         @Test
         @DisplayName("Ошибка: Использование строчных букв в токене")
         void lowercaseTokenTest() {
-            String token = "1234567890abcdef1234567890abcdef"; // Должны быть заглавные
+            String token = "1234567890abcdef1234567890abcdef";
             appApi.executeAction(token, UserAction.LOGIN, 400);
         }
 

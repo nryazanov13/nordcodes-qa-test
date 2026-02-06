@@ -11,13 +11,15 @@ public class MockApi {
     @Step("Mock: Внешний сервис вернет {status} для /auth")
     public void setupAuthResponse(int status) {
         stubFor(post(urlEqualTo(AUTH_PATH))
-                .willReturn(aResponse().withStatus(status)));
+                .willReturn(aResponse()
+                        .withStatus(status)));
     }
 
     @Step("Mock: Внешний сервис вернет {status} для /doAction")
     public void setupDoActionResponse(int status) {
         stubFor(post(urlEqualTo(DO_ACTION_PATH))
-                .willReturn(aResponse().withStatus(status)));
+                .willReturn(aResponse()
+                        .withStatus(status)));
     }
 
     @Step("Mock: Внешний сервис ответит {status} с задержкой {delay}мс")

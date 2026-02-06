@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserResponse {
-    private String result;  // Будет "OK" или "ERROR"
-    private String message; // Причина ошибки (может быть null)
+    private String result;
+    private String message;
 }
