@@ -1,25 +1,40 @@
-# Maven
+# --- Build Artifacts ---
 target/
-
-# IntelliJ IDEA
-.idea/
-*.iws
-*.iml
-*.ipr
 out/
+build/
 
-# System
-.DS_Store
-Thumbs.db
-
-# Java
+# --- Java & JARs ---
 *.class
-
+*.log
+*.ctxt
+# Игнорируем все JAR-файлы (включая тестируемое приложение)
 *.jar
+# НО разрешаем JAR-файл Maven Wrapper, иначе команды ./mvnw не запустятся
+!**/.mvn/wrapper/maven-wrapper.jar
 
-# Allure
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+*.ipr
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+
+# --- Allure Report ---
+# Игнорируем результаты и готовые отчеты, так как они генерируются при запуске
 allure-results/
 allure-report/
+.allure/
 
-# Прочие исключения
-!**/src/test/**
+# --- System Files ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# --- Maven Wrapper ---
+# Эти файлы ДОЛЖНЫ быть в репозитории
+!mvnw
+!mvnw.cmd
+!**/.mvn/

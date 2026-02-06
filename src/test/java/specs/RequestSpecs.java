@@ -13,4 +13,9 @@ public class RequestSpecs {
             .log().all()
             .header("X-Api-Key", TestBase.API_KEY)
             .contentType(URLENC);
+
+    public static RequestSpecification noHeaderSpec = with()
+            .filter(withCustomTemplates())
+            .log().all()
+            .contentType(URLENC);
 }

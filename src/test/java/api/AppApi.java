@@ -7,7 +7,7 @@ import specs.ResponseSpecs;
 import tests.TestBase;
 
 import static io.restassured.RestAssured.given;
-import static specs.RequestSpecs.baseRequestSpec;
+import static specs.RequestSpecs.*;
 
 public class AppApi {
 
@@ -22,4 +22,18 @@ public class AppApi {
                 .spec(ResponseSpecs.responseSpec(expectedStatus))
                 .extract().as(UserResponse.class);
     }
+
+    @Step("Запрос с кастомным API-ключом: action={action}, apiKey={apiKey}")
+    public UserResponse executeActionWithCustomKey(String token, UserAction action, int expectedStatus, String apiKey) {
+        return given(noHeaderSpec)
+                .header("X-Api-Key", apiKey)
+                .formParam("token", token)
+                .formParam("action", action.getValue())
+                .when()
+                .post(TestBase.ENDPOINT)
+                .then()
+                .spec(ResponseSpecs.responseSpec(expectedStatus))
+                .extract().as(UserResponse.class);
+    }
 }
+
